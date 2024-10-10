@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Level Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ccc;
+            margin: 10px 0;
+        }
+        .water-level {
+            font-size: 1.5em;
+            color: #2e7d32;
+        }
+        .error {
+            color: #d32f2f;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Water Level Monitoring</h1>
+    
+    {% if water_level %}
+    <div class="water-level">
+        <p><strong>Water Level:</strong> {{ water_level }} meters</p>
+        <p><strong>Timestamp:</strong> {{ timestamp }}</p>
+    </div>
+    
+    <div>
+        <h2>Images</h2>
+        <p><strong>Original Image:</strong></p>
+        <img src="{{ original_image_url }}" alt="Original Image">
+        <p><strong>Processed Image:</strong></p>
+        <img src="{{ processed_image_url }}" alt="Processed Image">
+        <p><strong>Water Level Line Image:</strong></p>
+        <img src="{{ water_level_line_image_url }}" alt="Water Level Line Image">
+    </div>
+    {% else %}
+    <div class="error">
+        <p>Error fetching data. Please try again later.</p>
+    </div>
+    {% endif %}
+</body>
+</html>
